@@ -1,6 +1,6 @@
 # 🤖 EchoBuddy
 
-**EchoBuddy** is a smart, responsive bot designed to [insert main purpose, e.g., automate community tasks / mirror messages / provide utility commands].
+**EchoBuddy** is a smart, responsive bot designed to Do whatever ig also its not working rn so give me some time
 
 ---
 
