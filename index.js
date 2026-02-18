@@ -1,7 +1,9 @@
+// Load the necessary libraries
 const { Client, GatewayIntentBits } = require('discord.js');
 require('dotenv').config();
 
-// Create a new client instance
+// Initialize the bot with specific "Intents" 
+// (These tell Discord what kind of data the bot is allowed to see)
 const client = new Client({ 
     intents: [
         GatewayIntentBits.Guilds, 
@@ -10,27 +12,32 @@ const client = new Client({
     ] 
 });
 
-// When the bot is ready, run this code once
+// Runs once when the bot successfully connects to Discord
 client.once('ready', () => {
-    console.log(`Ready! Logged in as ${client.user.tag}`);
+    console.log('--------------------------');
+    console.log(`✅ EchoBuddy is online!`);
+    console.log(`Logged in as: ${client.user.tag}`);
+    console.log('--------------------------');
 });
 
-// Listen for messages
+// Listens for every message sent in servers the bot is in
 client.on('messageCreate', message => {
-    // Ignore messages from the bot itself
+    // Safety check: Ignore messages from other bots (or itself)
     if (message.author.bot) return;
 
-    // The Echo command
-    if (message.content.startsWith('!echo ')) {
-        const say = message.content.slice(6);
-        message.channel.send(`📣 **EchoBuddy says:** ${say}`);
+    // Command: !ping
+    if (message.content === '!ping') {
+        message.reply('🏓 Pong! EchoBuddy is active.');
     }
 
-    // The Ping command
-    if (message.content === '!ping') {
-        message.reply('🏓 Pong!');
+    // Command: !echo [text]
+    if (message.content.startsWith('!echo ')) {
+        const say = message.content.slice(6); // Removes "!echo " from the start
+        if (!say) return message.reply("You didn't give me anything to echo!");
+        
+        message.channel.send(`📣 **Echo:** ${say}`);
     }
 });
 
-// Login to Discord with your client's token
+// Logs the bot in using the secret token from your .env file
 client.login(process.env.BOT_TOKEN);
