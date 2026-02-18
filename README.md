@@ -1,0 +1,2 @@
+# CoreSync-EchoBuddy
+ChatBot Kinda
