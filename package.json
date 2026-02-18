@@ -1,7 +1,7 @@
 {
   "name": "echobuddy",
   "version": "1.0.0",
-  "description": "A friendly echo bot",
+  "description": "A friendly and reliable Discord echo bot.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
